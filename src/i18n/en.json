@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Warmth of Natural Wood",
+    "subtitle": "Handcrafted wooden products"
+  },
+  "features": {
+    "quality": "High quality",
+    "handmade": "Handmade",
+    "sustainable": "Sustainable"
+  },
+  "products": {
+    "title": "Featured Products",
+    "add_to_cart": "Add to Cart"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "We are a workshop that respects wood and nature."
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Proceed"
+  }
+}
+
+

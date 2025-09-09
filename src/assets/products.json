@@ -1,0 +1,28 @@
+[
+  {
+    "id": "p1",
+    "title": "Ahşap Kupa Altlığı",
+    "price": 149.9,
+    "image": "/images/ChatGPT Image 9 Eyl 2025 13_32_05.png",
+    "description": "Doğal ahşap doku, el yapımı.",
+    "longDescription": "Sıcak içecekler için ideal ölçüde, %100 doğal yağ ile korunmuş çift gözlü ahşap kupa altlığı. Hem fincanı hem de atıştırmalıkları aynı yüzeyde taşıyacak şekilde tasarlanmıştır. Yüzeydeki lif yönü ve kenar yumuşatmaları elde RA ile yapılmıştır."
+  },
+  {
+    "id": "p2",
+    "title": "Kesme Tahtası",
+    "price": 399.0,
+    "image": "/images/ChatGPT Image 9 Eyl 2025 13_36_13.png",
+    "description": "Gıda uyumlu yağ ile korunmuş.",
+    "longDescription": "Mutfaklarda günlük kullanıma uygun, iz bırakmayan bıçak dostu kesme tahtası. Gıda temasına uygun mineral yağ ve balmumu karışımı ile düzenli bakım önerilir. Her tahta kendine özgü damar yapısına sahiptir."
+  },
+  {
+    "id": "p3",
+    "title": "Servis Tepsisi",
+    "price": 549.5,
+    "image": "/images/ChatGPT Image 9 Eyl 2025 13_40_42.png",
+    "description": "Rustik tasarım, geniş kullanım.",
+    "longDescription": "Geniş servis yüzeyine sahip rustik tepsi; kahvaltı, sunum ve dekor amaçlı kullanılabilir. Köşelerde elde açılmış pahlar ve kaymayı azaltan taban tasarımıyla güvenli taşıma sağlar."
+  }
+]
+
+

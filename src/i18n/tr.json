@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "products": "Ürünler",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Ahşabın Eşsiz Dokusu",
+    "subtitle": "El işçiliğiyle üretilen ahşap ürünler"
+  },
+  "features": {
+    "quality": "Yüksek kalite",
+    "handmade": "El yapımı",
+    "sustainable": "Sürdürülebilir"
+  },
+  "products": {
+    "title": "Öne Çıkan Ürünler",
+    "add_to_cart": "Sepete Ekle"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "content": "Ahşaba ve doğaya saygı duyan bir atölyeyiz. 4 yıldır titizlikle sürdürdüğümüz bu yolculukta, doğal malzemelerden ürettiğimiz el yapımı ürünlerimizle insanların yaşam alanlarına sıcaklık ve estetik katıyoruz. Nurcuk Workshop olarak her bir ürünü yalnızca bir eşya değil, aynı zamanda uzun yıllar kullanılabilecek bir emek ve özenin yansıması olarak görüyoruz. Ahşabın doğal dokusunu koruyarak modern tasarım anlayışıyla buluşturuyor, sürdürülebilir üretim ilkelerinden asla ödün vermiyoruz. Bu sayede hem doğaya hem de siz değerli müşterilerimize karşı sorumluluğumuzu yerine getirmenin gururunu yaşıyoruz."
+  },
+  "contact": {
+    "title": "İletişim",
+    "name": "Ad",
+    "email": "E-posta",
+    "message": "Mesaj",
+    "send": "Gönder"
+  },
+  "cart": {
+    "title": "Sepet",
+    "empty": "Sepetiniz boş",
+    "total": "Toplam",
+    "checkout": "Devam Et"
+  }
+}
+
+
