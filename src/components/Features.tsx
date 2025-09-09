@@ -11,7 +11,7 @@ export function Features() {
     <section className="bg-linen">
       <div className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
         {items.map((f, i) => (
-          <div key={i} className="p-6 rounded border border-wood-500/20 bg-white/70 hover:bg-wood-500 hover:text-white transition-colors duration-300 cursor-pointer">
+          <div key={i} className="feature-card p-6 rounded border border-wood-500/20 bg-white/70 transition-colors duration-300">
             <p className="font-medium">{f.title}</p>
           </div>
         ))}
