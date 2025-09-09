@@ -33,6 +33,17 @@
     "empty": "Your cart is empty",
     "total": "Total",
     "checkout": "Proceed"
+  },
+  "payment": {
+    "title": "Payment",
+    "total": "Total",
+    "cardholder_name": "Cardholder Name",
+    "cardholder_placeholder": "Full Name",
+    "card_number": "Card Number",
+    "expiry_date": "Expiry Date",
+    "cvv": "CVV Code",
+    "pay_now": "Pay Now",
+    "security_note": "Secure payment - Protected by SSL"
   }
 }
 

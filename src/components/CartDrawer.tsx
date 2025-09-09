@@ -1,4 +1,5 @@
 import { X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 type CartItem = {
   id: string
@@ -15,9 +16,11 @@ type CartDrawerProps = {
   onInc: (id: string) => void
   onDec: (id: string) => void
   onRemove: (id: string) => void
+  onCheckout: () => void
 }
 
-export function CartDrawer({ isOpen, items, onClose, onInc, onDec, onRemove }: CartDrawerProps) {
+export function CartDrawer({ isOpen, items, onClose, onInc, onDec, onRemove, onCheckout }: CartDrawerProps) {
+  const { t } = useTranslation()
   const total = items.reduce((acc, it) => acc + it.price * it.quantity, 0)
   return (
     <div
@@ -30,14 +33,14 @@ export function CartDrawer({ isOpen, items, onClose, onInc, onDec, onRemove }: C
         aria-label="Cart drawer"
       >
         <div className="h-16 flex items-center justify-between px-4 border-b border-wood-500/20">
-          <h3 className="font-display text-xl text-wood-900">Sepet</h3>
+          <h3 className="font-display text-xl text-wood-900">{t('cart.title')}</h3>
           <button onClick={onClose} className="p-2 rounded hover:bg-wood-500/10" aria-label="Close cart">
             <X />
           </button>
         </div>
         <div className="p-4 overflow-y-auto h-[calc(100%-8rem)]">
           {items.length === 0 ? (
-            <p className="text-wood-500">Sepetiniz boş</p>
+            <p className="text-wood-500">{t('cart.empty')}</p>
           ) : (
             <ul className="space-y-4">
               {items.map((it) => (
@@ -59,8 +62,14 @@ export function CartDrawer({ isOpen, items, onClose, onInc, onDec, onRemove }: C
           )}
         </div>
         <div className="h-16 border-t border-wood-500/20 px-4 flex items-center justify-between">
-          <span className="font-semibold text-wood-900">Toplam: ₺{total.toFixed(2)}</span>
-          <a href="#" className="px-4 py-2 bg-rust text-white rounded hover:opacity-90">Devam Et</a>
+          <span className="font-semibold text-wood-900">{t('cart.total')}: ₺{total.toFixed(2)}</span>
+          <button 
+            onClick={onCheckout}
+            disabled={items.length === 0}
+            className="px-4 py-2 bg-rust text-white rounded hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {t('cart.checkout')}
+          </button>
         </div>
       </aside>
     </div>

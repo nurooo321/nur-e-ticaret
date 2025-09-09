@@ -33,6 +33,17 @@
     "empty": "Sepetiniz boş",
     "total": "Toplam",
     "checkout": "Devam Et"
+  },
+  "payment": {
+    "title": "Ödeme",
+    "total": "Toplam",
+    "cardholder_name": "Kartın sahibinin adı",
+    "cardholder_placeholder": "Ad Soyad",
+    "card_number": "Kart numarası",
+    "expiry_date": "Son kullanma tarihi",
+    "cvv": "CVV kodu",
+    "pay_now": "Ödeme Yap",
+    "security_note": "Güvenli ödeme - SSL ile korunmaktadır"
   }
 }
 
