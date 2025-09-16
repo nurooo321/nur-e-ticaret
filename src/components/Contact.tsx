@@ -16,18 +16,50 @@ export function Contact() {
       <div className="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-2 gap-8">
         <div>
           <h2 className="font-display text-3xl text-wood-900">{t('contact.title')}</h2>
-          <form className="mt-6 grid grid-cols-1 gap-4" action={mailto}>
+          <form
+            className="mt-6 grid grid-cols-1 gap-4"
+            autoComplete="on"
+            onSubmit={(e) => {
+              e.preventDefault()
+              window.location.href = mailto
+            }}
+          >
             <label className="block">
               <span className="text-wood-900">{t('contact.name')}</span>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autoComplete="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust"
+                required
+              />
             </label>
             <label className="block">
               <span className="text-wood-900">{t('contact.email')}</span>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust"
+                required
+              />
             </label>
             <label className="block">
               <span className="text-wood-900">{t('contact.message')}</span>
-              <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-rust" required />
+              <textarea
+                id="message"
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-rust"
+                required
+              />
             </label>
             <div className="flex gap-3">
               <button type="submit" className="px-4 py-2 bg-rust text-white rounded hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-rust">{t('contact.send')}</button>
