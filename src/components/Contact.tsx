@@ -1,76 +1,93 @@
-import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+type SubmitState = 'idle' | 'loading' | 'success' | 'error'
 
 export function Contact() {
   const { t } = useTranslation()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<SubmitState>('idle')
+  const [error, setError] = useState<string | null>(null)
 
-  const mailto = `mailto:hello@example.com?subject=İletişim&body=${encodeURIComponent(`${name} - ${email}\n\n${message}`)}`
-  const wa = `https://wa.me/905335013973?text=${encodeURIComponent(message || 'Merhabalar bilgi alabilir miyim?')}`
-  const ig = `https://instagram.com/nurefsankrtl`
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('loading')
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ error: 'Unknown error' }))
+        throw new Error(data.error || 'Request failed')
+      }
+      setStatus('success')
+      setName('')
+      setEmail('')
+      setMessage('')
+    } catch (err) {
+      setStatus('error')
+      setError((err as Error).message)
+    }
+  }
 
   return (
-    <section id="contact" className="bg-linen">
-      <div className="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-2 gap-8">
-        <div>
-          <h2 className="font-display text-3xl text-wood-900">{t('contact.title')}</h2>
-          <form
-            className="mt-6 grid grid-cols-1 gap-4"
-            autoComplete="on"
-            onSubmit={(e) => {
-              e.preventDefault()
-              window.location.href = mailto
-            }}
+    <section id="contact" className="bg-linen py-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <h2 className="font-display text-3xl text-wood-900">{t('contact.title')}</h2>
+        <form onSubmit={handleSubmit} className="mt-8 grid gap-4 max-w-xl">
+          <label className="grid gap-2">
+            <span className="text-wood-900">{t('contact.name')}</span>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="px-3 py-2 rounded border border-wood-500/30 bg-white text-wood-900 focus:outline-none focus:ring-2 focus:ring-rust/60"
+              type="text"
+              name="name"
+              autoComplete="name"
+            />
+          </label>
+          <label className="grid gap-2">
+            <span className="text-wood-900">{t('contact.email')}</span>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="px-3 py-2 rounded border border-wood-500/30 bg-white text-wood-900 focus:outline-none focus:ring-2 focus:ring-rust/60"
+              type="email"
+              name="email"
+              autoComplete="email"
+            />
+          </label>
+          <label className="grid gap-2">
+            <span className="text-wood-900">{t('contact.message')}</span>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+              className="px-3 py-2 rounded border border-wood-500/30 bg-white text-wood-900 focus:outline-none focus:ring-2 focus:ring-rust/60 min-h-[140px]"
+              name="message"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="inline-flex items-center justify-center px-6 py-3 bg-rust text-white rounded hover:opacity-90 disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-rust/60"
           >
-            <label className="block">
-              <span className="text-wood-900">{t('contact.name')}</span>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                autoComplete="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust"
-                required
-              />
-            </label>
-            <label className="block">
-              <span className="text-wood-900">{t('contact.email')}</span>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rust"
-                required
-              />
-            </label>
-            <label className="block">
-              <span className="text-wood-900">{t('contact.message')}</span>
-              <textarea
-                id="message"
-                name="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="mt-1 w-full border border-wood-500/30 rounded px-3 py-2 h-28 focus:outline-none focus:ring-2 focus:ring-rust"
-                required
-              />
-            </label>
-            <div className="flex gap-3">
-              <button type="submit" className="px-4 py-2 bg-rust text-white rounded hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-rust">{t('contact.send')}</button>
-              <a href={wa} target="_blank" className="px-4 py-2 border border-wood-500/30 rounded text-wood-900 hover:bg-wood-500/10">WhatsApp</a>
-              <a href={ig} target="_blank" className="px-4 py-2 border border-wood-500/30 rounded text-wood-900 hover:bg-wood-500/10">Instagram</a>
-            </div>
-          </form>
-        </div>
-        <div className="rounded border border-wood-500/20 bg-white/70 p-6">
-          <p className="text-wood-900">Adres ve çalışma saatleri için bize yazın.</p>
-        </div>
+            {status === 'loading' ? '...' : t('contact.send')}
+          </button>
+          {status === 'success' && (
+            <p className="text-green-700">Mesajınız gönderildi. Teşekkürler!</p>
+          )}
+          {status === 'error' && (
+            <p className="text-red-700">Gönderim başarısız: {error}</p>
+          )}
+        </form>
       </div>
     </section>
   )

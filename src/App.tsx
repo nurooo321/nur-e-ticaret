@@ -6,7 +6,6 @@ import { Products } from '@components/Products'
 import { About } from '@components/About'
 import { Contact } from '@components/Contact'
 import { CartDrawer } from '@components/CartDrawer'
-import { PaymentModal } from '@components/PaymentModal'
 
 type CartItem = {
   id: string
@@ -18,7 +17,6 @@ type CartItem = {
 
 function App() {
   const [cartOpen, setCartOpen] = useState(false)
-  const [paymentOpen, setPaymentOpen] = useState(false)
   const [items, setItems] = useState<CartItem[]>(() => {
     try {
       const raw = localStorage.getItem('cart')
@@ -47,19 +45,6 @@ function App() {
   const inc = (id: string) => persist(items.map((it) => it.id === id ? { ...it, quantity: it.quantity + 1 } : it))
   const dec = (id: string) => persist(items.flatMap((it) => it.id === id ? (it.quantity > 1 ? [{ ...it, quantity: it.quantity - 1 }] : []) : [it]))
   const remove = (id: string) => persist(items.filter((it) => it.id !== id))
-  
-  const handleCheckout = () => {
-    setCartOpen(false)
-    setPaymentOpen(true)
-  }
-  
-  const handlePaymentSuccess = () => {
-    setItems([])
-    try { localStorage.removeItem('cart') } catch { void 0 }
-    alert('Ödeme başarılı! Siparişiniz alındı.')
-  }
-  
-  const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 
   return (
     <div className="min-h-screen bg-linen">
@@ -71,21 +56,7 @@ function App() {
         <About />
         <Contact />
       </main>
-      <CartDrawer 
-        isOpen={cartOpen} 
-        items={items} 
-        onClose={() => setCartOpen(false)} 
-        onInc={inc} 
-        onDec={dec} 
-        onRemove={remove}
-        onCheckout={handleCheckout}
-      />
-      <PaymentModal 
-        isOpen={paymentOpen}
-        onClose={() => setPaymentOpen(false)}
-        total={total}
-        onPaymentSuccess={handlePaymentSuccess}
-      />
+      <CartDrawer isOpen={cartOpen} items={items} onClose={() => setCartOpen(false)} onInc={inc} onDec={dec} onRemove={remove} />
     </div>
   )
 }

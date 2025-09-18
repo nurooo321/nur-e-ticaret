@@ -1,23 +1,26 @@
-import { useTranslation } from 'react-i18next'
+import React from 'react'
 
-export function Features() {
-  const { t } = useTranslation()
-  const items = [
-    { title: t('features.quality') },
-    { title: t('features.handmade') },
-    { title: t('features.sustainable') },
-  ]
+export const Features: React.FC = () => {
   return (
-    <section className="bg-linen">
-      <div className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {items.map((f, i) => (
-          <div key={i} className="feature-card p-6 rounded border border-wood-500/20 bg-white/70 transition-colors duration-300">
-            <p className="font-medium">{f.title}</p>
-          </div>
-        ))}
+    <section className="py-16">
+      <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="rounded-xl bg-white p-6 shadow">
+          <h3 className="text-lg font-semibold">Hızlı Teslimat</h3>
+          <p className="text-sm text-gray-600 mt-2">1-3 iş günü içinde kargoda.</p>
+        </div>
+        <div className="rounded-xl bg-white p-6 shadow">
+          <h3 className="text-lg font-semibold">Güvenli Ödeme</h3>
+          <p className="text-sm text-gray-600 mt-2">256-bit SSL ile korunur.</p>
+        </div>
+        <div className="rounded-xl bg-white p-6 shadow">
+          <h3 className="text-lg font-semibold">7/24 Destek</h3>
+          <p className="text-sm text-gray-600 mt-2">Her zaman yanındayız.</p>
+        </div>
       </div>
     </section>
   )
 }
+
+export default Features
 
 

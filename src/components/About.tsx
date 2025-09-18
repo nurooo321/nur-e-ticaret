@@ -1,18 +1,18 @@
-import { useTranslation } from 'react-i18next'
+import React from 'react'
 
-export function About() {
-  const { t } = useTranslation()
+export const About: React.FC = () => {
   return (
-    <section id="about" className="bg-linen">
-      <div className="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 className="font-display text-3xl text-wood-900">{t('about.title')}</h2>
-          <p className="mt-4 text-wood-500">{t('about.content')}</p>
-        </div>
-        <img loading="lazy" src="/images/ChatGPT Image 9 Eyl 2025 18_35_50.png" alt="Workshop" className="rounded shadow" />
+    <section id="about" className="py-20">
+      <div className="container mx-auto px-4 max-w-3xl">
+        <h2 className="text-2xl font-bold">Hakkımızda</h2>
+        <p className="mt-4 text-gray-700">
+          Kaliteli ürünleri uygun fiyatlarla sunan, müşteri memnuniyetini merkeze alan bir alışveriş deneyimi tasarlıyoruz.
+        </p>
       </div>
     </section>
   )
 }
+
+export default About
 
 

@@ -1,67 +1,69 @@
-# Ahşap Ürünler E-Ticaret Sitesi
+# React + TypeScript + Vite
 
-React, Vite ve Tailwind CSS ile geliştirilmiş ahşap ürünler e-ticaret sitesi.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Özellikler
+Currently, two official plugins are available:
 
-- 🛍️ Ürün kataloğu ve sepet yönetimi
-- 🌍 Türkçe/İngilizce dil desteği
-- 📱 Responsive tasarım
-- 🎨 Modern ve sıcak renk paleti
-- ⚡ Hızlı yükleme ve performans
-- 🖼️ Ürün görselleri için lightbox modal
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Teknolojiler
+## Expanding the ESLint configuration
 
-- React 18
-- Vite
-- TypeScript
-- Tailwind CSS
-- i18next (çoklu dil desteği)
-- Lucide React (ikonlar)
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Kurulum
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```bash
-npm install
-npm run dev
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Build
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm run build
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-## Deployment
-
-### Netlify
-1. GitHub'a push yapın
-2. Netlify'da yeni site oluşturun
-3. Repository'yi bağlayın
-4. Build settings: `npm run build`, Publish directory: `dist`
-
-### Vercel
-1. GitHub'a push yapın
-2. Vercel'de yeni proje oluşturun
-3. Repository'yi bağlayın
-4. Framework: Vite seçin
-
-## Proje Yapısı
-
-```
-src/
-├── components/     # React bileşenleri
-├── assets/         # Statik veriler (ürünler JSON)
-├── hooks/          # Custom React hooks
-├── i18n/           # Dil dosyaları
-└── styles/         # CSS dosyaları
-```
-
-## Ürün Verileri
-
-Ürün bilgileri `src/assets/products.json` dosyasında tutulmaktadır. Yeni ürün eklemek için bu dosyayı düzenleyin.
-
-## Görseller
-
-Ürün görselleri `public/images/` klasöründe bulunmaktadır.
