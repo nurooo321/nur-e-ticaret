@@ -11,7 +11,7 @@ export function Header({ onOpenCart }: HeaderProps) {
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-linen/90 backdrop-blur border-b border-wood-500/20">
       <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-        <a href="#hero" className="font-display text-2xl text-wood-900">WoodCraft</a>
+        <a href="#hero" className="font-display text-2xl text-wood-900">aft</a>
 
         <nav className="hidden md:flex gap-6" aria-label="Main">
           <a href="#products" className="text-wood-900 hover:text-rust transition-colors">{t('nav.products')}</a>
