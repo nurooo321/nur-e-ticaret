@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "products": "Ürünler",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Doğal Ağacın Sıcaklığı",
+    "subtitle": "El yapımı ahşap ürünler"
+  },
+  "features": {
+    "quality": "Yüksek kalite",
+    "handmade": "El yapımı",
+    "sustainable": "Sürdürülebilir"
+  },
+  "products": {
+    "title": "Öne Çıkan Ürünler",
+    "add_to_cart": "Sepete Ekle"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "content": "Ağaca ve doğaya saygı duyan bir atölyeyiz."
+  },
+  "contact": {
+    "title": "İletişim",
+    "name": "Ad",
+    "email": "E‑posta",
+    "message": "Mesaj",
+    "send": "Gönder"
+  },
+  "cart": {
+    "title": "Sepet",
+    "empty": "Sepetiniz boş",
+    "total": "Toplam",
+    "checkout": "Devam Et"
+  },
+  "payment": {
+    "title": "Ödeme",
+    "total": "Toplam",
+    "cardholder_name": "Kart Sahibi Adı",
+    "cardholder_placeholder": "Ad Soyad",
+    "card_number": "Kart Numarası",
+    "expiry_date": "Son Kullanma Tarihi",
+    "cvv": "CVV Kodu",
+    "pay_now": "Ödemeyi Yap",
+    "security_note": "Güvenli ödeme - SSL ile korunur"
+  }
+}
+
+

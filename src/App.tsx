@@ -6,6 +6,7 @@ import { Products } from '@components/Products'
 import { About } from '@components/About'
 import { Contact } from '@components/Contact'
 import { CartDrawer } from '@components/CartDrawer'
+import { WebinarForm } from '@components/WebinarForm'
 
 type CartItem = {
   id: string
@@ -54,6 +55,7 @@ function App() {
         <Features />
         <Products onAdd={handleAdd} />
         <About />
+        <WebinarForm />
         <Contact />
       </main>
       <CartDrawer isOpen={cartOpen} items={items} onClose={() => setCartOpen(false)} onInc={inc} onDec={dec} onRemove={remove} />
